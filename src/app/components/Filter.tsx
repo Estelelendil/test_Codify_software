@@ -10,13 +10,7 @@ const items: Record<PeriodKey, string> = {
 
 const itemsArr = Object.entries(items);
 
-export default function Filter({
-  filter,
-  setFilter,
-}: {
-  filter: "year" | "half_year" | "month";
-  setFilter: Dispatch<"year" | "half_year" | "month">;
-}) {
+export default function Filter({ filter, setFilter }: { filter: PeriodKey; setFilter: Dispatch<PeriodKey> }) {
   const onChange: ChangeEventHandler<HTMLSelectElement> = (e) => {
     const target = e.target as HTMLSelectElement;
     const value = target.value as PeriodKey;
