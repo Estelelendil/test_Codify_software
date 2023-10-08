@@ -9,9 +9,9 @@ export function extractGraphData(periodData: PeriodData): RechartsGraphData {
     const periodKey = key as PeriodKey;
     const period = graphData[periodKey];
 
-    const newPeriodData = Object.entries(period).map(([key, value], index) => ({
+    const newPeriodData = Object.entries(period).map(([_, value], index) => ({
       data: value,
-      label: (index + 1).toString().length === 1 ? 0 + (index + 1).toString() : (index + 1).toString(),
+      label: (index + 1).toString().padStart(2, "0"),
     }));
 
     result[periodKey] = newPeriodData;

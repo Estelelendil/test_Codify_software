@@ -34,8 +34,10 @@ export default function Graph({ data }: { data: RechartsGraphData }) {
             tickFormatter={(value, index) => {
               if (filter !== "month") {
                 return value;
+              } else if (index === 0 || (index + 1) % 5 === 0) {
+                return value;
               } else {
-                return index === 0 || (index + 1) % 5 === 0 ? value : " ";
+                return "";
               }
             }}
           />
