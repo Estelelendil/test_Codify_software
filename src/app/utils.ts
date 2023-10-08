@@ -1,7 +1,6 @@
 import { type PeriodData, type PeriodKey } from "@/pages/api/data";
 
 export type RechartsGraphData = Record<PeriodKey, Array<{ data: number | null; label: string }>>;
-
 export function extractGraphData(periodData: PeriodData): RechartsGraphData {
   const result: Partial<RechartsGraphData> = {};
   const graphData = periodData.graph;
@@ -10,9 +9,9 @@ export function extractGraphData(periodData: PeriodData): RechartsGraphData {
     const periodKey = key as PeriodKey;
     const period = graphData[periodKey];
 
-    const newPeriodData = Object.entries(period).map(([key, value]) => ({
+    const newPeriodData = Object.entries(period).map(([key, value], index) => ({
       data: value,
-      label: key,
+      label: (index + 1).toString().length === 1 ? 0 + (index + 1).toString() : (index + 1).toString(),
     }));
 
     result[periodKey] = newPeriodData;
