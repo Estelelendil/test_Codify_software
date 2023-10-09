@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { Bar, BarChart, XAxis, type XAxisProps, YAxis, type YAxisProps } from "recharts";
+import {Bar, BarChart, XAxis, type XAxisProps, YAxis, type YAxisProps} from "recharts";
 
 import { type PeriodKey } from "@/pages/api/data";
 
@@ -41,7 +41,13 @@ export default function Graph({ data }: { data: RechartsGraphData }) {
               }
             }}
           />
-          <YAxis {...xyProps} axisLine={false} />
+          <YAxis
+            {...xyProps}
+            axisLine={false}
+            tickFormatter={(value) => {
+              return (value * 2).toString();
+            }}
+          />
           <Bar isAnimationActive={false} dataKey="data" radius={2} {...graphProps} minPointSize={2} />
         </BarChart>
       </div>
