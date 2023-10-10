@@ -44,9 +44,9 @@ export default function Graph({ data }: { data: RechartsGraphData }) {
           <YAxis
             {...xyProps}
             axisLine={false}
-            tickFormatter={(value) => {
-              return (value * 2).toString();
-            }}
+            // tickFormatter={(value) => {
+            //   return (value * 2).toString();
+            // }}
           />
           <Bar isAnimationActive={false} dataKey="data" radius={2} {...graphProps} minPointSize={2} />
         </BarChart>
